@@ -56,7 +56,7 @@ industry after the Great Depression and the Second World War. An interesting fol
 Next we look at the range of the number horses for each provinces at any time point between 1940 - 1972:
 
 ```{r max horse table, message=FALSE, warning=FALSE}
-max_horses <- horse_pop %>% 
+ max_horses <- horse_pop %>% 
   select(GEO, Value) %>% 
   rename(Province = GEO) %>% 
   group_by(Province) %>% 
@@ -65,7 +65,7 @@ max_horses <- horse_pop %>%
 kable(max_horses, caption = "Table 1. This is a summary of the horse population for each provinces between 1940-1972")
 ```
 
-Below we zoom in and look at the province of Alberta:
+Below we zoom in and look at the province of `r max_horses$Province[1]`:
 
 ```{r plot province, fig.width=5, fig.height=4, fig.cap="Figure 2. Horse populations for province  of focus", out.width='40%'}
 province_plot <- horse_pop %>% 
