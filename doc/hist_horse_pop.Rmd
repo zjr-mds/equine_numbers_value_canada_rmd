@@ -1,6 +1,8 @@
 ---
 title: "Historical horse population in Canada"
 bibliography: references.bib
+params:
+  Province: "Ontario"
 output: html_document
 ---
 
@@ -66,11 +68,11 @@ Next we look at the range of the number horses for each provinces at any time po
 kable(max_horses, caption = "Table 1. This is a summary of the horse population for each provinces between 1940-1972")
 ```
 
-Below we zoom in and look at the province of `r max_horses$Province[1]`:
+Below we zoom in and look at the province of `r params$Province`:
 
 ```{r plot province, fig.width=5, fig.height=4, fig.cap="Figure 2. Horse populations for province  of focus", out.width='40%'}
 province_plot <- horse_pop %>% 
-  filter(GEO == "Alberta") %>% 
+  filter(GEO == params$Province) %>% 
   ggplot(aes(x = Ref_Date, y = Value)) +
   geom_point() +
   geom_line() +
